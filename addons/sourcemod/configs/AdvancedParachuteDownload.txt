@@ -1,0 +1,17 @@
+materials/models/parachute/gargoyle.vmt
+materials/models/parachute/gargoyle.vtf
+materials/models/parachute/pack.vmt
+materials/models/parachute/pack.vtf
+models/parachute/gargoyle.dx80.vtx
+models/parachute/gargoyle.dx90.vtx
+models/parachute/gargoyle.mdl
+models/parachute/gargoyle.sw.vtx
+models/parachute/gargoyle.vvd
+materials/models/parachute/parachute_blue.vmt
+materials/models/parachute/parachute_blue.vtf
+models/parachute/parachute_blue.dx80.vtx
+models/parachute/parachute_blue.dx90.vtx
+models/parachute/parachute_blue.mdl
+models/parachute/parachute_blue.sw.vtx
+models/parachute/parachute_blue.vvd
+models/parachute/parachute_blue.xbox.vtx

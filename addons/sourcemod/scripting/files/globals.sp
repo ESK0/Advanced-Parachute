@@ -11,3 +11,5 @@ int g_iDefaultPar = -1;
 int g_iVelocity = -1;
 
 Handle g_hParachute;
+
+Handle g_hOnParachute;

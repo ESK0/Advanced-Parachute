@@ -103,6 +103,15 @@ void AdvP_AddFilesToDownload()
 }
 void AttachParachute(int client)
 {
+  Action result = Plugin_Continue;
+  Call_StartForward(g_hOnParachute);
+  Call_PushCell(client);
+  Call_Finish(result);
+  if (result == Plugin_Stop || result == Plugin_Handled)
+  {
+    return;
+  }
+  
   g_iParachuteEnt[client] = CreateEntityByName("prop_dynamic_override");
   if(IsValidEntity(g_iParachuteEnt[client]))
   {

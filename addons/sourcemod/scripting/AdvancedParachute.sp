@@ -20,6 +20,13 @@ public Plugin myinfo =
   url = ""
 };
 
+public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
+{
+  g_hOnParachute = CreateGlobalForward("OnParachuteOpen", ET_Event, Param_Cell);
+  RegPluginLibrary("AdvancedParachute");
+  return APLRes_Success;
+}
+
 public void OnPluginStart()
 {
   RegConsoleCmd("sm_parachute", Command_Parachute);

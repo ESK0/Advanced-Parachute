@@ -20,6 +20,8 @@ public Plugin myinfo =
   url = ""
 };
 
+bool ParachuteBool = true;
+
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
 {
   g_hOnParachute = CreateGlobalForward("OnParachuteOpen", ET_Event, Param_Cell);
@@ -36,6 +38,9 @@ public void OnPluginStart()
   smParachutes = new StringMap();
 
   HookEvent("player_death",Event_OnPlayerDeath);
+
+  HookEvent("round_start", Event_OnRoundStart);
+  HookEvent("round_end", Event_OnRoundEnd);
 
   g_iVelocity = FindSendPropInfo("CBasePlayer", "m_vecVelocity[0]");
   if(g_iVelocity == -1)
@@ -154,16 +159,29 @@ public void OnClientDisconnect_Post(int client)
     g_LastButtons[client] = 0;
 }
 
+public Action Event_OnRoundEnd(Event event, const char[] name, bool dontBroadcast)
+{
+	ParachuteBool = false;
+}
+
+public Action Event_OnRoundStart(Event event, const char[] name, bool dontBroadcast)
+{
+	ParachuteBool = true;
+}
+
 void OnButtonPress(int client, int button)
 {
-  if(IsValidClient(client, true))
-  {
-    int cFlags = GetEntityFlags(client);
-    if(button == IN_USE && g_iParachuteEnt[client] == 0 && IsInAir(client, cFlags))
-    {
-      AttachParachute(client);
-    }
-  }
+	if (ParachuteBool)
+	{
+		if (IsValidClient(client, true))
+		{
+			int cFlags = GetEntityFlags(client);
+			if (button == IN_USE && g_iParachuteEnt[client] == 0 && IsInAir(client, cFlags))
+			{
+				AttachParachute(client);
+			}
+		}
+	}
 }
 
 void OnButtonRelease(int client, int button)

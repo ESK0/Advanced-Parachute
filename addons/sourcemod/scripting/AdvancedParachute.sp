@@ -39,8 +39,8 @@ public void OnPluginStart()
 
   HookEvent("player_death",Event_OnPlayerDeath);
 
-	HookEvent("round_start", Event_OnRoundStart);
-	HookEvent("round_end", Event_OnRoundEnd);
+  HookEvent("round_start", Event_OnRoundStart);
+  HookEvent("round_end", Event_OnRoundEnd);
 
   g_iVelocity = FindSendPropInfo("CBasePlayer", "m_vecVelocity[0]");
   if(g_iVelocity == -1)
